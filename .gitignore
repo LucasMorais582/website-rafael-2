@@ -11,6 +11,7 @@ node_modules/
 .pnp.js
 .yarn/install-state.gz
 .yarn/*
+yarn.lock
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
