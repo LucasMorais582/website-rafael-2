@@ -100,13 +100,17 @@ export default function Header() {
                       </Link>
                     ))}
                   </nav>
-                  <div className="p-4 border-t border-flg-light space-y-3">
-                    <a href="tel:+12015551234" className="flex items-center justify-center space-x-2 w-full py-3 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors">
+                  <div className="p-4 border-t border-flg-light">
+                    <a
+                      href="tel:+12015551234"
+                      className="flex items-center justify-center space-x-2 w-full h-12 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors"
+                    >
                       <Phone className="h-4 w-4" />
                       <span>{t.callNow}</span>
                     </a>
-                    <Link href="/contact" onClick={() => setOpen(false)}>
-                      <Button className="w-full bg-flg-accent hover:bg-flg-blue text-white font-medium">
+
+                    <Link href="/contact" onClick={() => setOpen(false)} className="block mt-4">
+                      <Button className="w-full h-12 bg-flg-accent hover:bg-flg-blue text-white font-medium">
                         {t.schedule}
                       </Button>
                     </Link>
