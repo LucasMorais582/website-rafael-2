@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/components/LanguageProvider'
 import { translations } from '@/lib/translations'
 import { Button } from '@/components/ui/button'
@@ -29,12 +30,30 @@ export default function AttorneyPage() {
       <section className="py-20 lg:py-28 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            {/* Quote */}
-            <div className="relative mb-14 p-8 bg-[#f8f9fb] rounded-xl border-l-4 border-flg-accent">
-              <Quote className="h-8 w-8 text-flg-accent/30 mb-3" />
-              <p className="font-serif text-xl text-flg-dark/80 italic leading-relaxed">
-                {t.quote}
-              </p>
+            {/* Attorney Photo & Intro */}
+            <div className="flex flex-col md:flex-row gap-10 items-start mb-14">
+              <div className="w-full md:w-[280px] flex-shrink-0">
+                <div className="relative rounded-xl overflow-hidden shadow-xl border-4 border-white ring-1 ring-flg-light">
+                  <Image
+                    src="/rafael-figueroa.jpg"
+                    alt="Rafael Figueroa, Esq. – Founder and President of Figueroa Law Group, Immigration Attorney serving New Jersey and New York"
+                    width={560}
+                    height={700}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h2 className="font-serif text-3xl font-bold text-flg-dark mb-2">{t.name}</h2>
+                <p className="text-flg-accent font-medium mb-6">{t.role}</p>
+                <div className="relative p-6 bg-[#f8f9fb] rounded-xl border-l-4 border-flg-accent">
+                  <Quote className="h-6 w-6 text-flg-accent/30 mb-2" />
+                  <p className="font-serif text-lg text-flg-dark/80 italic leading-relaxed">
+                    {t.quote}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Bio paragraphs */}
