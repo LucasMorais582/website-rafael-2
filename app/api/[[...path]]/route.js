@@ -4,58 +4,126 @@ import { NextResponse } from 'next/server'
 // FIGUEROA LAW GROUP - API ROUTES
 // ============================================================================
 
-// ---- MOCK NEWSLETTER DATA ----
-// TODO: Replace with Beehiiv API integration
-// Beehiiv API Key: Set BEEHIIV_API_KEY in .env
-// Beehiiv Publication ID: Set BEEHIIV_PUBLICATION_ID in .env
-// Beehiiv API Docs: https://developers.beehiiv.com/docs/v2
-const mockNewsletterPosts = [
+// ---- BEEHIIV API HELPER ----
+// Fetches posts from Beehiiv API v2 (server-side only)
+// Requires environment variables:
+//   BEEHIIV_API_KEY - Your Beehiiv API key (get from https://app.beehiiv.com/settings/integrations)
+//   BEEHIIV_PUBLICATION_ID - Your publication ID
+async function fetchBeehiivPosts(limit = 10) {
+  const apiKey = process.env.BEEHIIV_API_KEY
+  const publicationId = process.env.BEEHIIV_PUBLICATION_ID
+
+  if (!apiKey || !publicationId) {
+    console.warn('Beehiiv credentials not configured. Set BEEHIIV_API_KEY and BEEHIIV_PUBLICATION_ID in .env')
+    return null
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.beehiiv.com/v2/publications/${publicationId}/posts?status=confirmed&order_by=publish_date&direction=desc&limit=${limit}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        next: { revalidate: 300 }, // Cache for 5 minutes
+      }
+    )
+
+    if (!response.ok) {
+      console.error(`Beehiiv API error: ${response.status} ${response.statusText}`)
+      return null
+    }
+
+    const data = await response.json()
+
+    // Map Beehiiv post format to our frontend format
+    const posts = (data.data || []).map((post) => {
+      const publishDate = post.publish_date
+        ? new Date(post.publish_date * 1000).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        : ''
+
+      // Use subtitle as excerpt, or strip HTML from content preview
+      let excerpt = post.subtitle || ''
+      if (!excerpt && post.content) {
+        excerpt = post.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'
+      }
+
+      // Extract category from content_tags if available
+      const category = (post.content_tags && post.content_tags.length > 0)
+        ? post.content_tags[0]
+        : 'Legal Update'
+
+      return {
+        id: post.id,
+        title: post.title || 'Untitled Post',
+        excerpt,
+        date: publishDate,
+        category,
+        url: post.web_url || '#',
+        thumbnail: post.thumbnail_url || null,
+      }
+    })
+
+    return posts
+  } catch (error) {
+    console.error('Failed to fetch Beehiiv posts:', error.message)
+    return null
+  }
+}
+
+// ---- BEEHIIV SUBSCRIPTION HELPER ----
+async function subscribeToBeehiiv(email) {
+  const apiKey = process.env.BEEHIIV_API_KEY
+  const publicationId = process.env.BEEHIIV_PUBLICATION_ID
+
+  if (!apiKey || !publicationId) {
+    console.warn('Beehiiv credentials not configured for subscription.')
+    return { success: false, message: 'Newsletter service not configured yet.' }
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.beehiiv.com/v2/publications/${publicationId}/subscriptions`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          email,
+          reactivate_existing: true,
+          send_welcome_email: true,
+        }),
+      }
+    )
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}))
+      console.error('Beehiiv subscription error:', response.status, errData)
+      return { success: false, message: 'Failed to subscribe. Please try again.' }
+    }
+
+    return { success: true, message: 'Successfully subscribed to the newsletter.' }
+  } catch (error) {
+    console.error('Beehiiv subscription failed:', error.message)
+    return { success: false, message: 'Subscription service unavailable.' }
+  }
+}
+
+// ---- FALLBACK MOCK DATA (used only when Beehiiv API is unavailable) ----
+const fallbackPosts = [
   {
-    id: '1',
-    title: 'Understanding the New USCIS Filing Requirements for 2025',
-    excerpt: 'Recent changes to USCIS filing procedures affect family-based petitions and employment-based green card applications. Learn what you need to know to stay compliant.',
-    date: 'May 15, 2025',
-    category: 'Immigration',
-    url: '#',
-  },
-  {
-    id: '2',
-    title: 'How Estate Planning Protects Immigrant Families',
-    excerpt: 'For immigrant families, estate planning is not just about asset protection. It is about ensuring stability and clarity for loved ones regardless of immigration status changes.',
-    date: 'April 28, 2025',
-    category: 'Estate Planning',
-    url: '#',
-  },
-  {
-    id: '3',
-    title: 'EB-5 Investor Visa Program: What Changed in 2025',
-    excerpt: 'The EB-5 Immigrant Investor Program continues to evolve. We break down the latest updates and what they mean for investors seeking permanent residency.',
-    date: 'April 10, 2025',
-    category: 'Business Immigration',
-    url: '#',
-  },
-  {
-    id: '4',
-    title: 'Bankruptcy and Immigration: What You Need to Know',
-    excerpt: 'Filing for bankruptcy can be stressful, especially when you have immigration concerns. Learn how these two areas of law interact and what protections exist.',
-    date: 'March 22, 2025',
-    category: 'Bankruptcy',
-    url: '#',
-  },
-  {
-    id: '5',
-    title: 'Real Estate Transactions for Non-Citizens: A Complete Guide',
-    excerpt: 'Non-citizens can buy and sell property in the United States, but there are specific considerations and tax implications to be aware of.',
-    date: 'March 5, 2025',
-    category: 'Real Estate',
-    url: '#',
-  },
-  {
-    id: '6',
-    title: 'TPS Updates: Countries Designated for 2025',
-    excerpt: 'Temporary Protected Status (TPS) designations continue to change. Stay informed about which countries are currently designated and what it means for your case.',
-    date: 'February 18, 2025',
-    category: 'Immigration',
+    id: 'fallback-1',
+    title: 'Stay Tuned for Legal Insights',
+    excerpt: 'Our newsletter is being set up. Soon you will find the latest immigration law updates, legal insights, and firm news right here.',
+    date: '',
+    category: 'FLG News',
     url: '#',
   },
 ]
@@ -71,16 +139,16 @@ export async function GET(request) {
     return NextResponse.json({ message: 'Figueroa Law Group API is running', status: 'ok' })
   }
 
-  // Newsletter posts
-  // TODO: Replace with actual Beehiiv API call:
-  // const response = await fetch(
-  //   `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/posts?status=confirmed&limit=10`,
-  //   { headers: { 'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}` } }
-  // )
-  // const data = await response.json()
-  // return NextResponse.json({ posts: data.data })
+  // Newsletter posts - fetches from Beehiiv API (server-side)
   if (path === '/newsletter/posts') {
-    return NextResponse.json({ posts: mockNewsletterPosts })
+    const posts = await fetchBeehiivPosts(10)
+
+    if (posts && posts.length > 0) {
+      return NextResponse.json({ posts, source: 'beehiiv' })
+    }
+
+    // Fallback if Beehiiv API is not configured or fails
+    return NextResponse.json({ posts: fallbackPosts, source: 'fallback' })
   }
 
   return NextResponse.json({ error: 'Not found' }, { status: 404 })
