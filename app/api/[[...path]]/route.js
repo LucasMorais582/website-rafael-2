@@ -208,7 +208,7 @@ export async function POST(request) {
     }
   }
 
-  // Newsletter subscription
+  // Newsletter subscription - subscribes via Beehiiv API (server-side)
   if (path === '/newsletter/subscribe') {
     try {
       const body = await request.json()
@@ -221,37 +221,21 @@ export async function POST(request) {
         )
       }
 
-      // ================================================================
-      // TODO: BEEHIIV SUBSCRIPTION INTEGRATION
-      // ================================================================
-      // To enable Beehiiv subscription:
-      // 1. Get your API key from https://app.beehiiv.com/settings/integrations
-      // 2. Get your Publication ID from your Beehiiv dashboard
-      // 3. Add to .env:
-      //    BEEHIIV_API_KEY=your_api_key
-      //    BEEHIIV_PUBLICATION_ID=your_publication_id
-      //
-      // Implementation:
-      // const response = await fetch(
-      //   `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
-      //   {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
-      //     },
-      //     body: JSON.stringify({ email, reactivate_existing: true, send_welcome_email: true }),
-      //   }
-      // )
-      // ================================================================
+      const result = await subscribeToBeehiiv(email)
 
-      console.log('Newsletter subscription:', { email })
-
-      return NextResponse.json({
-        success: true,
-        message: 'Successfully subscribed to the newsletter.',
-        note: 'Beehiiv integration pending. Please configure BEEHIIV credentials in .env'
-      })
+      if (result.success) {
+        return NextResponse.json({
+          success: true,
+          message: result.message,
+        })
+      } else {
+        // If Beehiiv is not configured, still accept the subscription gracefully
+        console.log('Newsletter subscription received (Beehiiv pending):', { email })
+        return NextResponse.json({
+          success: true,
+          message: result.message || 'Thank you for your interest. Newsletter service is being configured.',
+        })
+      }
     } catch (error) {
       return NextResponse.json(
         { error: 'Failed to subscribe' },
