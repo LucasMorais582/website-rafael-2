@@ -68,9 +68,13 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <a href="tel:+12015551234">
-                <Button size="lg" variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent">
-                  {t.nav.callNow}: (201) 555-1234
+              <a href="tel:+12015551233">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white/30 text-white hover:text-white hover:bg-white/10 font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
+                >
+                  {t.nav.callNow}: (201) 555-1235
                 </Button>
               </a>
             </div>
