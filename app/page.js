@@ -59,7 +59,7 @@ export default function HomePage() {
               {t.hero.supporting}
             </p>
             <p className="text-base text-white/60 mb-10 max-w-2xl leading-relaxed">
-              {t.hero.intro.substring(0, 200)}...
+              {t.hero.intro}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
@@ -251,10 +251,10 @@ export default function HomePage() {
                   <p className="text-sm text-flg-dark/60 mb-4 leading-relaxed">{post.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-flg-dark/40">{post.date}</span>
-                    <span className="text-sm font-medium text-flg-accent flex items-center">
+                    {/* <span className="text-sm font-medium text-flg-accent flex items-center">
                       {t.newsletter?.readMore || 'Read More'}
                       <ArrowRight className="ml-1 h-3 w-3" />
-                    </span>
+                    </span> */}
                   </div>
                 </CardContent>
               </Card>
