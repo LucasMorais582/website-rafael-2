@@ -98,13 +98,13 @@ export default function Footer() {
                 </a>
               </div>
 
-              {/* <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">{contact.nyOffice.label}</p>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">{contact.woodcliffOffice.label}</p>
                 <div className="flex items-start space-x-2">
                   <MapPin className="h-4 w-4 text-flg-accent mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-white/70">{contact.nyOffice.address}<br />{contact.nyOffice.city}</p>
+                  <p className="text-sm text-white/70">{contact.woodcliffOffice.address}<br />{contact.woodcliffOffice.city}</p>
                 </div>
-              </div> */}
+              </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-flg-accent flex-shrink-0" />
                 <a href="tel:+12018610500" className="text-sm text-white/70 hover:text-white transition-colors">(201) 861-0500</a>
