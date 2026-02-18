@@ -97,13 +97,24 @@ export default function Footer() {
                   </p>
                 </a>
               </div>
-
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">{contact.woodcliffOffice.label}</p>
-                <div className="flex items-start space-x-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">
+                  {contact.woodcliffOffice.label}
+                </p>
+
+                <a
+                  href="https://www.google.com/maps?q=50+Tice+Blvd,+Suite+340,+Woodcliff+Lake,+NJ+07677"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start space-x-2 hover:text-white transition-colors"
+                >
                   <MapPin className="h-4 w-4 text-flg-accent mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-white/70">{contact.woodcliffOffice.address}<br />{contact.woodcliffOffice.city}</p>
-                </div>
+                  <p className="text-sm text-white/70 hover:text-white">
+                    {contact.woodcliffOffice.address}
+                    <br />
+                    {contact.woodcliffOffice.city}
+                  </p>
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-flg-accent flex-shrink-0" />
