@@ -6,7 +6,7 @@ import { useLanguage } from '@/components/LanguageProvider'
 import { translations } from '@/lib/translations'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu, Phone, Globe } from 'lucide-react'
+import { Menu, Phone, Globe, MessageSquare } from 'lucide-react'
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage()
