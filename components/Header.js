@@ -6,7 +6,7 @@ import { useLanguage } from '@/components/LanguageProvider'
 import { translations } from '@/lib/translations'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu, Phone, Globe } from 'lucide-react'
+import { Menu, Phone, Globe, MessageSquare } from 'lucide-react'
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage()
@@ -100,17 +100,17 @@ export default function Header() {
                       </Link>
                     ))}
                   </nav>
-                  <div className="p-4 border-t border-flg-light">
-                    <a
-                      href="tel:+12015551234"
-                      className="flex items-center justify-center space-x-2 w-full h-12 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors"
-                    >
+                  <div className="p-4 border-t border-flg-light space-y-3">
+                    <a href="tel:+12018610500" className="flex items-center justify-center space-x-2 w-full py-3 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors">
                       <Phone className="h-4 w-4" />
                       <span>{t.callNow}</span>
                     </a>
-
-                    <Link href="/contact" onClick={() => setOpen(false)} className="block mt-4">
-                      <Button className="w-full h-12 bg-flg-accent hover:bg-flg-blue text-white font-medium">
+                    <a href="sms:+12018610500" className="flex items-center justify-center space-x-2 w-full py-3 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors" aria-label="Send a text message to Figueroa Law Group">
+                      <MessageSquare className="h-4 w-4" />
+                      <span>{language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}</span>
+                    </a>
+                    <Link href="/contact" onClick={() => setOpen(false)}>
+                      <Button className="w-full bg-flg-accent hover:bg-flg-blue text-white font-medium">
                         {t.schedule}
                       </Button>
                     </Link>

@@ -149,7 +149,7 @@ export default function ContactPage() {
               <div className="p-6 bg-[#f8f9fb] rounded-xl space-y-4">
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-flg-accent" />
-                  <a href="tel:+12015551234" className="text-flg-dark hover:text-flg-accent transition-colors font-medium">(201) 555-1234</a>
+                  <a href="tel:+12018610500" className="text-flg-dark hover:text-flg-accent transition-colors font-medium">(201) 861-0500</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-flg-accent" />
