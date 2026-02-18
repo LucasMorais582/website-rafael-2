@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import {
   Globe, Plane, Users, Shield, FileText, Home, Heart,
   ArrowRight, Check, Scale, Landmark, BookOpen, UserCheck,
-  Gavel, ShieldCheck
+  Gavel, ShieldCheck, MessageSquare
 } from 'lucide-react'
 
 const immigrationIcons = [Users, Plane, Heart, Landmark, BookOpen, ShieldCheck]
