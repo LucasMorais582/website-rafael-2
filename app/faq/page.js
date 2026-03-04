@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, ExternalLink, MessageSquare } from 'lucide-react'
 
 export default function FAQPage() {
   const { language } = useLanguage()
@@ -62,12 +62,20 @@ export default function FAQPage() {
             {/* Footer CTA */}
             <div className="mt-14 p-8 bg-[#f8f9fb] rounded-xl text-center">
               <p className="text-lg text-flg-dark/70 mb-6">{t.footerCta}</p>
-              <Link href="/contact">
-                <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
-                  {language === 'en' ? 'Schedule a Consultation' : 'Programar una Consulta'}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link href="/contact">
+                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
+                    {language === 'en' ? 'Schedule a Consultation' : 'Programar una Consulta'}
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <a href="sms:+12018610500" aria-label="Text Figueroa Law Group">
+                  <Button size="lg" variant="outline" className="border-flg-navy text-flg-navy hover:bg-flg-navy hover:text-white font-semibold px-8">
+                    <MessageSquare className="mr-2 h-5 w-5" />
+                    {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+                  </Button>
+                </a>
+              </div>
             </div>
 
             {/* Resources */}
