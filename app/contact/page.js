@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { translations } from '@/lib/translations'
+import { CONTACT_EMAIL } from '@/lib/constants'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -153,7 +154,7 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-flg-accent" />
-                  <a href="mailto:info@figueroalawgroup.com" className="text-flg-dark hover:text-flg-accent transition-colors font-medium">info@figueroalawgroup.com</a>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-flg-dark hover:text-flg-accent transition-colors font-medium">{CONTACT_EMAIL}</a>
                 </div>
               </div>
 

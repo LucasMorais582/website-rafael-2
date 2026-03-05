@@ -33,7 +33,7 @@ export default function Header() {
             <img
               src="/logo.svg"
               alt="Figueroa Law Group"
-              className="h-14 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 

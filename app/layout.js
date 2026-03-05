@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
     alternateName: 'FLG',
     url: process.env.NEXT_PUBLIC_BASE_URL,
     telephone: '(201) 861-0500',
-    email: 'info@figueroalawgroup.com',
+    email: 'info@flgus.com',
     foundingDate: '1999',
     description: 'Immigration law firm serving New Jersey and New York with over 25 years of experience.',
     areaServed: ['New Jersey', 'New York'],

@@ -5,7 +5,7 @@ import { useLanguage } from '@/components/LanguageProvider'
 import { translations } from '@/lib/translations'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowRight, Globe, Heart, Shield, FileText, Home, Users, Landmark, BookOpen, Gavel } from 'lucide-react'
+import { ArrowRight, Globe, Heart, Shield, FileText, Home, Users, Landmark, BookOpen, Gavel, MessageSquare } from 'lucide-react'
 
 const serviceIcons = [Globe, Heart, Shield, FileText, Home, Gavel, Landmark]
 
@@ -50,12 +50,20 @@ export default function ForIndividualsPage() {
           </div>
           <div className="text-center">
             <p className="text-lg text-flg-dark/70 mb-8 max-w-2xl mx-auto font-serif italic">{t.closing}</p>
-            <Link href="/contact">
-              <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
-                {language === 'en' ? 'Schedule a Consultation' : 'Programar una Consulta'}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/contact">
+                <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
+                  {language === 'en' ? 'Schedule a Consultation' : 'Programar una Consulta'}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <a href="sms:+12018610500" aria-label="Text Figueroa Law Group">
+                <Button size="lg" variant="outline" className="border-flg-navy text-flg-navy hover:bg-flg-navy hover:text-white font-semibold px-8">
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
