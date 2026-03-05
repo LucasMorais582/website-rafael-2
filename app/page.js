@@ -62,15 +62,9 @@ export default function HomePage() {
                 {t.hero.supporting}
               </p>
               <p className="text-base text-white/60 mb-10 max-w-2xl leading-relaxed">
-                {t.hero.intro.substring(0, 200)}...
+                {t.hero.intro}
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold text-base px-8 py-6 w-full sm:w-auto">
-                    {t.nav.schedule}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
                 <a href="tel:+12018610500">
                   <Button size="lg" variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent">
                     {t.nav.callNow}: (201) 861-0500
@@ -82,45 +76,16 @@ export default function HomePage() {
                     {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
                   </Button>
                 </a>
+                <Link href="/contact">
+                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold text-base px-7 py-6 w-full sm:w-auto">
+                    {t.nav.schedule}
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
-              {t.hero.tagline}
-            </h1>
-            <p className="text-xl sm:text-2xl text-white/80 font-light mb-4 leading-relaxed">
-              {t.hero.supporting}
-            </p>
-            <p className="text-base text-white/60 mb-10 max-w-2xl leading-relaxed">
-              {t.hero.intro}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold text-base px-8 py-6 w-full sm:w-auto">
-                  {t.nav.schedule}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <a href="sms:+12018610500" aria-label="Send a text message to Figueroa Law Group">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:!text-white font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
-                >
-                  <MessageSquare className="mr-2 h-5 w-5" />
-                  {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
-                </Button>
-              </a>
-              <a href="tel:+12018610500">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:!text-white font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
-                >
-                  {t.nav.callNow}: (201) 861-0500
-                </Button>
-              </a>
             {/* Right: Hero Image */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block translate-x-32">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/hero-image.jpg"
@@ -134,7 +99,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
         </div>
         {/* Decorative bottom wave */}
         <div className="absolute bottom-0 left-0 right-0">

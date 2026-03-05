@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <img src="/logo.svg" alt="Figueroa Law Group" className="h-20 w-auto brightness-0 invert mb-4" />
+            <img src="/logo.svg" alt="Figueroa Law Group" className="h-24 w-auto brightness-0 invert mb-4" />
             <p className="text-white/70 text-sm leading-relaxed font-serif italic">
               {t.tagline}
             </p>
@@ -155,7 +155,7 @@ export default function Footer() {
       {/* Legal Disclaimer */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-6">
-          <p className="text-[11px] text-white/30 leading-relaxed max-w-5xl">
+          <p className="text-[11px] text-white/30 leading-relaxed text-justify">
             {legalDisclaimer}
           </p>
         </div>

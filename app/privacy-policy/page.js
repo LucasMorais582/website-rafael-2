@@ -87,12 +87,12 @@ export default function PrivacyPolicyPage() {
                 </p>
               </div>
 
-              <div>
+              {/* <div>
                 <h2 className="font-serif text-xl font-semibold text-flg-dark mb-4">7. {language === 'en' ? 'Contact' : 'Contacto'}</h2>
                 <p className="text-flg-dark/70">
                   Rafael Figueroa Law
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
