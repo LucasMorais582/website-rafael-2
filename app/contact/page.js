@@ -181,26 +181,26 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* NY Office */}
+              {/* Woodcliff Lake Office */}
               <div className="rounded-xl overflow-hidden border border-flg-light">
                 <div className="p-5">
                   <div className="flex items-start space-x-3">
                     <MapPin className="h-5 w-5 text-flg-accent mt-0.5 flex-shrink-0" />
                     <div>
-                      <h3 className="font-serif text-lg font-semibold text-flg-dark mb-1">{t.nyOffice.label}</h3>
-                      <p className="text-flg-dark/70">{t.nyOffice.address}<br />{t.nyOffice.city}</p>
+                      <h3 className="font-serif text-lg font-semibold text-flg-dark mb-1">{t.woodcliffOffice.label}</h3>
+                      <p className="text-flg-dark/70">{t.woodcliffOffice.address}<br />{t.woodcliffOffice.city}</p>
                     </div>
                   </div>
                 </div>
                 <iframe
-                  src="https://maps.google.com/maps?q=400+Rella+Blvd+Suite+165+Suffern+NY+10901&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src="https://www.google.com/maps?q=50+Tice+Blvd,+Suite+340,+Woodcliff+Lake,+NJ+07677&output=embed"
                   width="100%"
                   height="220"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="NY Office Location"
+                  title="Woodcliff Lake Office Location"
                 />
               </div>
             </div>

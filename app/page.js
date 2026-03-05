@@ -84,6 +84,41 @@ export default function HomePage() {
                 </a>
               </div>
             </div>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
+              {t.hero.tagline}
+            </h1>
+            <p className="text-xl sm:text-2xl text-white/80 font-light mb-4 leading-relaxed">
+              {t.hero.supporting}
+            </p>
+            <p className="text-base text-white/60 mb-10 max-w-2xl leading-relaxed">
+              {t.hero.intro}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact">
+                <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold text-base px-8 py-6 w-full sm:w-auto">
+                  {t.nav.schedule}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <a href="sms:+12018610500" aria-label="Send a text message to Figueroa Law Group">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:!text-white font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
+                >
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+                </Button>
+              </a>
+              <a href="tel:+12018610500">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:!text-white font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
+                >
+                  {t.nav.callNow}: (201) 861-0500
+                </Button>
+              </a>
             {/* Right: Hero Image */}
             <div className="hidden lg:block">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -99,6 +134,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
         </div>
         {/* Decorative bottom wave */}
         <div className="absolute bottom-0 left-0 right-0">
@@ -289,10 +325,10 @@ export default function HomePage() {
                   <p className="text-sm text-flg-dark/60 mb-4 leading-relaxed">{post.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-flg-dark/40">{post.date}</span>
-                    <span className="text-sm font-medium text-flg-accent flex items-center">
+                    {/* <span className="text-sm font-medium text-flg-accent flex items-center">
                       {t.newsletter?.readMore || 'Read More'}
                       <ArrowRight className="ml-1 h-3 w-3" />
-                    </span>
+                    </span> */}
                   </div>
                 </CardContent>
               </Card>

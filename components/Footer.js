@@ -102,18 +102,42 @@ export default function Footer() {
             </h4>
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">{contact.njOffice.label}</p>
-                <div className="flex items-start space-x-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">
+                  {contact.njOffice.label}
+                </p>
+
+                <a
+                  href="https://www.google.com/maps/place/221+River+St+9th+floor,+Hoboken,+NJ+07030/@40.738486,-74.027529,15z/data=!4m6!3m5!1s0x89c25744c1c2b487:0xbf2df397c2a28da!8m2!3d40.7384859!4d-74.0275289!16s%2Fg%2F11rg61d8kh?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start space-x-2 hover:text-white transition-colors"
+                >
                   <MapPin className="h-4 w-4 text-flg-accent mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-white/70">{contact.njOffice.address}<br />{contact.njOffice.city}</p>
-                </div>
+                  <p className="text-sm text-white/70 hover:text-white">
+                    {contact.njOffice.address}
+                    <br />
+                    {contact.njOffice.city}
+                  </p>
+                </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">{contact.nyOffice.label}</p>
-                <div className="flex items-start space-x-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">
+                  {contact.woodcliffOffice.label}
+                </p>
+
+                <a
+                  href="https://www.google.com/maps?q=50+Tice+Blvd,+Suite+340,+Woodcliff+Lake,+NJ+07677"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start space-x-2 hover:text-white transition-colors"
+                >
                   <MapPin className="h-4 w-4 text-flg-accent mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-white/70">{contact.nyOffice.address}<br />{contact.nyOffice.city}</p>
-                </div>
+                  <p className="text-sm text-white/70 hover:text-white">
+                    {contact.woodcliffOffice.address}
+                    <br />
+                    {contact.woodcliffOffice.city}
+                  </p>
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-flg-accent flex-shrink-0" />

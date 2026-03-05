@@ -101,19 +101,26 @@ export default function Header() {
                     ))}
                   </nav>
                   <div className="p-4 border-t border-flg-light space-y-3">
-                    <a href="tel:+12018610500" className="flex items-center justify-center space-x-2 w-full py-3 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors">
-                      <Phone className="h-4 w-4" />
-                      <span>{t.callNow}</span>
-                    </a>
-                    <a href="sms:+12018610500" className="flex items-center justify-center space-x-2 w-full py-3 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors" aria-label="Send a text message to Figueroa Law Group">
-                      <MessageSquare className="h-4 w-4" />
-                      <span>{language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}</span>
-                    </a>
                     <Link href="/contact" onClick={() => setOpen(false)}>
-                      <Button className="w-full bg-flg-accent hover:bg-flg-blue text-white font-medium">
+                      <Button className="w-full h-10 bg-flg-accent hover:bg-flg-blue text-white font-medium">
                         {t.schedule}
                       </Button>
                     </Link>
+                    <a
+                      href="sms:+12018610500"
+                      className="flex items-center justify-center space-x-2 w-full h-10 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors"
+                      aria-label="Send a text message to Figueroa Law Group"
+                    >
+                      <MessageSquare className="h-4 w-4" />
+                      <span>{language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}</span>
+                    </a>
+                    <a
+                      href="tel:+12018610500"
+                      className="flex items-center justify-center space-x-2 w-full h-10 text-flg-navy font-medium border border-flg-navy rounded-md hover:bg-flg-navy hover:text-white transition-colors"
+                    >
+                      <Phone className="h-4 w-4" />
+                      <span>{t.callNow}</span>
+                    </a>
                   </div>
                 </div>
               </SheetContent>
