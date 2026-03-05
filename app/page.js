@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/components/LanguageProvider'
 import { translations } from '@/lib/translations'
 import { Button } from '@/components/ui/button'
@@ -43,50 +44,59 @@ export default function HomePage() {
             backgroundPosition: 'center'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0f2032]/95 to-[#1a3a5a]/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f2032]/95 to-[#1a3a5a]/80" />
         <div className="relative container mx-auto px-4 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <div className="inline-block mb-6">
-              <div className="flex items-center space-x-2 text-flg-accent text-sm font-semibold uppercase tracking-[0.2em]">
-                <div className="w-8 h-[2px] bg-flg-accent" />
-                <span>Figueroa Law Group</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
+            <div>
+              <div className="inline-block mb-6">
+                <div className="flex items-center space-x-2 text-flg-accent text-sm font-semibold uppercase tracking-[0.2em]">
+                  <div className="w-8 h-[2px] bg-flg-accent" />
+                  <span>Figueroa Law Group</span>
+                </div>
+              </div>
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
+                {t.hero.tagline}
+              </h1>
+              <p className="text-xl sm:text-2xl text-white/80 font-light mb-4 leading-relaxed">
+                {t.hero.supporting}
+              </p>
+              <p className="text-base text-white/60 mb-10 max-w-2xl leading-relaxed">
+                {t.hero.intro}
+              </p>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                <a href="tel:+12018610500">
+                  <Button size="lg" variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent">
+                    {t.nav.callNow}: (201) 861-0500
+                  </Button>
+                </a>
+                <a href="sms:+12018610500" aria-label="Send a text message to Figueroa Law Group">
+                  <Button size="lg" variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent">
+                    <MessageSquare className="mr-2 h-5 w-5" />
+                    {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+                  </Button>
+                </a>
+                <Link href="/contact">
+                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold text-base px-7 py-6 w-full sm:w-auto">
+                    {t.nav.schedule}
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
-              {t.hero.tagline}
-            </h1>
-            <p className="text-xl sm:text-2xl text-white/80 font-light mb-4 leading-relaxed">
-              {t.hero.supporting}
-            </p>
-            <p className="text-base text-white/60 mb-10 max-w-2xl leading-relaxed">
-              {t.hero.intro}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold text-base px-8 py-6 w-full sm:w-auto">
-                  {t.nav.schedule}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <a href="sms:+12018610500" aria-label="Send a text message to Figueroa Law Group">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:!text-white font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
-                >
-                  <MessageSquare className="mr-2 h-5 w-5" />
-                  {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
-                </Button>
-              </a>
-              <a href="tel:+12018610500">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:!text-white font-semibold text-base px-8 py-6 w-full sm:w-auto bg-transparent"
-                >
-                  {t.nav.callNow}: (201) 861-0500
-                </Button>
-              </a>
+            {/* Right: Hero Image */}
+            <div className="hidden lg:block translate-x-32">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/hero-image.jpg"
+                  alt="Person standing at a crossroads with arrows pointing in many directions, symbolizing clarity and guidance through legal uncertainty"
+                  width={800}
+                  height={800}
+                  className="w-full h-[500px] object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f2032]/30 to-transparent" />
+              </div>
             </div>
           </div>
         </div>
@@ -110,21 +120,36 @@ export default function HomePage() {
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-flg-dark mb-6">
                 {t.immigration.title}
               </h2>
-              <p className="text-lg text-flg-dark/70 leading-relaxed mb-8">
+              <p className="text-lg text-flg-dark/70 leading-relaxed mb-4">
                 {t.immigration.subtitle}
               </p>
-              <Link href="/contact">
-                <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
-                  {t.immigration.cta}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+              <p className="text-lg text-flg-dark/70 leading-relaxed mb-8">
+                {language === 'en'
+                  ? 'We understand that behind every visa, status, or filing is a personal story and a goal worth protecting.'
+                  : 'Entendemos que detr\u00e1s de cada visa, estatus o solicitud hay una historia personal y un objetivo que vale la pena proteger.'}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact">
+                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
+                    {t.immigration.cta}
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <a href="sms:+12018610500" aria-label="Text Figueroa Law Group about immigration">
+                  <Button size="lg" variant="outline" className="border-flg-navy text-flg-navy hover:bg-flg-navy hover:text-white font-semibold px-8">
+                    <MessageSquare className="mr-2 h-5 w-5" />
+                    {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+                  </Button>
+                </a>
+              </div>
             </div>
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1503572327579-b5c6afe5c5c5?auto=format&fit=crop&w=800&q=80"
-                  alt="Immigration - Statue of Liberty"
+                <Image
+                  src="/world-map.jpg"
+                  alt="Vintage world map with people from diverse backgrounds, representing international immigration and global perspective"
+                  width={800}
+                  height={800}
                   className="w-full h-[400px] object-cover"
                 />
               </div>
@@ -164,8 +189,13 @@ export default function HomePage() {
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-flg-dark mb-4">
               {t.practiceAreas.title}
             </h2>
-            <p className="text-lg text-flg-dark/60 max-w-2xl mx-auto">
+            <p className="text-lg text-flg-dark/60 max-w-2xl mx-auto mb-3">
               {t.practiceAreas.subtitle}
+            </p>
+            <p className="text-lg text-flg-dark/60 max-w-3xl mx-auto">
+              {language === 'en'
+                ? "Whether you\u2019re seeking to build a new life, grow a business, or protect what you\u2019ve built, we provide strategic legal solutions rooted in clarity, empathy, and trust."
+                : "Ya sea que busque construir una nueva vida, hacer crecer un negocio o proteger lo que ha construido, brindamos soluciones legales estrat\u00e9gicas basadas en claridad, empat\u00eda y confianza."}
             </p>
           </div>
 
@@ -293,12 +323,20 @@ export default function HomePage() {
           <p className="text-xl text-white/80 mb-10">
             {t.ctaBanner.subtext}
           </p>
-          <Link href="/contact">
-            <Button size="lg" className="bg-white text-flg-navy hover:bg-white/90 font-semibold text-lg px-10 py-6">
-              {t.ctaBanner.cta}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/contact">
+              <Button size="lg" className="bg-white text-flg-navy hover:bg-white/90 font-semibold text-lg px-10 py-6">
+                {t.ctaBanner.cta}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <a href="sms:+12018610500" aria-label="Text Figueroa Law Group">
+              <Button size="lg" variant="outline" className="border-2 border-white/40 text-white hover:bg-white/10 font-semibold text-lg px-10 py-6 bg-transparent">
+                <MessageSquare className="mr-2 h-5 w-5" />
+                {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
     </div>
