@@ -129,18 +129,18 @@ export default function HomePage() {
                   : 'Entendemos que detr\u00e1s de cada visa, estatus o solicitud hay una historia personal y un objetivo que vale la pena proteger.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
-                    {t.immigration.cta}
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
                 <a href="sms:+12018610500" aria-label="Text Figueroa Law Group about immigration">
                   <Button size="lg" variant="outline" className="border-flg-navy text-flg-navy hover:bg-flg-navy hover:text-white font-semibold px-8">
                     <MessageSquare className="mr-2 h-5 w-5" />
                     {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
                   </Button>
                 </a>
+                <Link href="/contact">
+                  <Button size="lg" className="bg-flg-accent hover:bg-flg-blue text-white font-semibold px-8">
+                    {t.immigration.cta}
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="relative">
@@ -323,19 +323,19 @@ export default function HomePage() {
           <p className="text-xl text-white/80 mb-10">
             {t.ctaBanner.subtext}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col gap-4 items-center">
+            <a href="sms:+12018610500" aria-label="Text Figueroa Law Group">
+                <Button size="lg" className="bg-white text-flg-navy hover:bg-white/90 font-semibold text-lg px-10 py-6">
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                    {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
+              </Button>
+            </a>
             <Link href="/contact">
               <Button size="lg" className="bg-white text-flg-navy hover:bg-white/90 font-semibold text-lg px-10 py-6">
                 {t.ctaBanner.cta}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <a href="sms:+12018610500" aria-label="Text Figueroa Law Group">
-              <Button size="lg" variant="outline" className="border-2 border-white/40 text-white hover:bg-white/10 font-semibold text-lg px-10 py-6 bg-transparent">
-                <MessageSquare className="mr-2 h-5 w-5" />
-                {language === 'en' ? 'Text Us' : 'Escr\u00edbanos'}
-              </Button>
-            </a>
           </div>
         </div>
       </section>
