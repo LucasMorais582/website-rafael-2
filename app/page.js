@@ -85,14 +85,14 @@ export default function HomePage() {
               </div>
             </div>
             {/* Right: Hero Image */}
-            <div className="hidden lg:block translate-x-32">
+            <div className="hidden lg:block lg:pl-10 xl:pl-20">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/hero-image.jpg"
                   alt="Person standing at a crossroads with arrows pointing in many directions, symbolizing clarity and guidance through legal uncertainty"
                   width={800}
                   height={800}
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[350px] lg:h-[420px] xl:h-[500px] object-cover"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f2032]/30 to-transparent" />
