@@ -35,7 +35,7 @@ export default function AttorneyPage() {
               <div className="w-full md:w-[280px] flex-shrink-0">
                 <div className="relative rounded-xl overflow-hidden shadow-xl border-4 border-white ring-1 ring-flg-light">
                   <Image
-                    src="/rafael-figueroa.jpg"
+                    src="/rafael-figueroa.jpeg"
                     alt="Rafael Figueroa, Esq. – Founder and President of Figueroa Law Group, Immigration Attorney serving New Jersey and New York"
                     width={560}
                     height={700}
