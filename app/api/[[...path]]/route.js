@@ -158,8 +158,7 @@ export async function GET(request) {
 export async function POST(request) {
   const { pathname } = new URL(request.url)
   const path = pathname.replace('/api', '')
-  console.log('PATH DEBUG:', path)
-  const resend = new Resend(`re_drUJsapb_KcviedHoDLDuXaoz1GGvk9Jg`)
+  const resend = new Resend(process.env.RESEND_API_KEY)
 
   // Contact form submission
   if (path === '/contact') {
@@ -175,9 +174,9 @@ export async function POST(request) {
       }
 
       const { data, error } = await resend.emails.send({
-        from: 'FLG Website <onboarding@resend.dev>',
-        to: ['lucasmorais582@gmail.com'],
-        subject: 'New message from FLG website',
+        from: 'Figueroa Law Group Website <onboarding@resend.dev>',
+        to: ['info@flgus.com'],
+        subject: `New Contact Form Submission - ${name}`,
         reply_to: email,
         html: `
           <h2>New Contact Form Submission</h2>
