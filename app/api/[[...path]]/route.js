@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { Resend } from 'resend'
 
 // ============================================================================
 // FIGUEROA LAW GROUP - API ROUTES
@@ -157,6 +158,8 @@ export async function GET(request) {
 export async function POST(request) {
   const { pathname } = new URL(request.url)
   const path = pathname.replace('/api', '')
+  console.log('PATH DEBUG:', path)
+  const resend = new Resend(`re_drUJsapb_KcviedHoDLDuXaoz1GGvk9Jg`)
 
   // Contact form submission
   if (path === '/contact') {
@@ -171,29 +174,29 @@ export async function POST(request) {
         )
       }
 
-      // ================================================================
-      // TODO: EMAILJS INTEGRATION
-      // ================================================================
-      // To enable EmailJS integration:
-      // 1. Create an account at https://www.emailjs.com
-      // 2. Set up an email service (e.g., Gmail, Outlook)
-      // 3. Create an email template with variables: {{name}}, {{email}}, {{phone}}, {{message}}
-      // 4. Add these to your .env file:
-      //    EMAILJS_SERVICE_ID=your_service_id
-      //    EMAILJS_TEMPLATE_ID=your_template_id
-      //    EMAILJS_PUBLIC_KEY=your_public_key
-      //
-      // Client-side EmailJS implementation (add to contact page):
-      // import emailjs from '@emailjs/browser'
-      // emailjs.send(
-      //   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-      //   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-      //   { name, email, phone, message },
-      //   process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      // )
-      // ================================================================
+      const { data, error } = await resend.emails.send({
+        from: 'FLG Website <onboarding@resend.dev>',
+        to: ['lucasmorais582@gmail.com'],
+        subject: 'New message from FLG website',
+        reply_to: email,
+        html: `
+          <h2>New Contact Form Submission</h2>
 
-      console.log('Contact form submission:', { name, email, phone, message })
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `
+      })
+
+      if (error) {
+        console.error('Resend error:', error)
+      } else {
+        console.log('Email sent successfully:', data)
+      }
+        console.log('Contact form submission:', { name, email, phone, message })
 
       return NextResponse.json({
         success: true,
