@@ -45,17 +45,17 @@ export default function HomePage() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0f2032]/95 to-[#1a3a5a]/80" />
-        <div className="relative container mx-auto px-4 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative max-w-[1400px] mx-auto px-4 lg:px-8 py-20">
+          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-center">
             {/* Left: Content */}
             <div>
-              <div className="inline-block mb-6">
+              <div className="inline-block mb-5">
                 <div className="flex items-center space-x-2 text-flg-accent text-sm font-semibold uppercase tracking-[0.2em]">
                   <div className="w-8 h-[2px] bg-flg-accent" />
                   <span>Figueroa Law Group</span>
                 </div>
               </div>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
                 {t.hero.tagline}
               </h1>
               <p className="text-xl sm:text-2xl text-white/80 font-light mb-4 leading-relaxed">
@@ -85,14 +85,14 @@ export default function HomePage() {
               </div>
             </div>
             {/* Right: Hero Image */}
-            <div className="hidden lg:block lg:pl-10 xl:pl-20">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+           <div className="mt-10 lg:mt-0 lg:pl-4 xl:pl-20 w-full xl:translate-x-8 2xl:translate-x-16">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full">
                 <Image
                   src="/hero-image.jpg"
                   alt="Person standing at a crossroads with arrows pointing in many directions, symbolizing clarity and guidance through legal uncertainty"
-                  width={800}
-                  height={800}
-                  className="w-full h-[350px] lg:h-[420px] xl:h-[500px] object-cover"
+                  width={1400}
+                  height={900}
+                  className="w-full h-[420px] lg:h-[520px] xl:h-[620px] object-cover"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f2032]/30 to-transparent" />
