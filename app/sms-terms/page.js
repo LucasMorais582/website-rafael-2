@@ -29,8 +29,12 @@ export default function SMSTermsPage() {
                 : 'Al optar por recibir SMS desde un formulario web u otro medio, usted está de acuerdo en recibir mensajes SMS de Figueroa Law Group. Esto incluye mensajes SMS para conversaciones (externas). La frecuencia de los mensajes varía. Pueden aplicarse tarifas estándar de mensajes y datos. Vea la política de privacidad en '
               }
               <Link href="/privacy-policy" className="text-flg-accent hover:text-flg-blue underline">
-                Privacy Policy
-              </Link>. Message HELP for help. Reply STOP to any message to opt out.
+                {language === 'en' ? 'Privacy Policy' : 'Política de Privacidad'}
+              </Link> 
+                {language === 'en' 
+                  ? '. Message HELP for help. Reply STOP to any message to opt out.' 
+                  : '. Mensaje HELP para obtener ayuda. Responda STOP a cualquier mensaje para darse de baja.'
+                }
             </p>
 
             <h2 className="font-serif text-2xl font-bold text-flg-dark mt-12 mb-6">
