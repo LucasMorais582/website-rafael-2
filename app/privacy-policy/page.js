@@ -24,8 +24,8 @@ export default function PrivacyPolicyPage() {
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-flg-dark/70 leading-relaxed mb-10">
               {language === 'en'
-                ? 'At Rafael Figueroa Law, we are committed to protecting your privacy.'
-                : 'En Rafael Figueroa Law, estamos comprometidos con la protecci\u00f3n de su privacidad.'}
+                ? 'At Figueroa Law Group, we are committed to protecting your privacy.'
+                : 'En Figueroa Law Group, estamos comprometidos con la protecci\u00f3n de su privacidad.'}
             </p>
 
             <div className="space-y-10">

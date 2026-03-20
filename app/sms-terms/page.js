@@ -24,7 +24,10 @@ export default function SMSTermsPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto prose prose-lg">
             <p className="text-lg text-flg-dark/70 leading-relaxed mb-8">
-              By opting into SMS from a web form or other medium, you are agreeing to receive SMS messages from Rafael Figueroa PC. This includes SMS messages for conversations (external). Message frequency varies. Message and data rates may apply. See privacy policy at{' '}
+              {language === 'en' 
+                ? 'By opting into SMS from a web form or other medium, you are agreeing to receive SMS messages from Figueroa Law Group. This includes SMS messages for conversations (external). Message frequency varies. Message and data rates may apply. See privacy policy at ' 
+                : 'Al optar por recibir SMS desde un formulario web u otro medio, usted está de acuerdo en recibir mensajes SMS de Figueroa Law Group. Esto incluye mensajes SMS para conversaciones (externas). La frecuencia de los mensajes varía. Pueden aplicarse tarifas estándar de mensajes y datos. Vea la política de privacidad en '
+              }
               <Link href="/privacy-policy" className="text-flg-accent hover:text-flg-blue underline">
                 Privacy Policy
               </Link>. Message HELP for help. Reply STOP to any message to opt out.
@@ -39,8 +42,8 @@ export default function SMSTermsPage() {
                 <h3 className="font-serif text-xl font-semibold text-flg-dark mb-3">1. {language === 'en' ? 'Types of Messages You May Receive' : 'Tipos de Mensajes que Puede Recibir'}</h3>
                 <p className="text-flg-dark/70 mb-3">
                   {language === 'en'
-                    ? 'By opting in to receive SMS communications from Rafael Figueroa PC, you agree to receive messages that may include:'
-                    : 'Al optar por recibir comunicaciones SMS de Rafael Figueroa PC, usted acepta recibir mensajes que pueden incluir:'}
+                    ? 'By opting in to receive SMS communications from Figueroa Law Group, you agree to receive messages that may include:'
+                    : 'Al optar por recibir comunicaciones SMS de Figueroa Law Group, usted acepta recibir mensajes que pueden incluir:'}
                 </p>
                 <ul className="list-disc pl-6 text-flg-dark/70 space-y-2">
                   <li>{language === 'en' ? 'Appointment confirmations and reminders' : 'Confirmaciones y recordatorios de citas'}</li>
@@ -64,8 +67,8 @@ export default function SMSTermsPage() {
                 <h3 className="font-serif text-xl font-semibold text-flg-dark mb-3">3. {language === 'en' ? 'Charges' : 'Cargos'}</h3>
                 <p className="text-flg-dark/70">
                   {language === 'en'
-                    ? 'Standard message and data rates may apply as determined by your mobile carrier. Rafael Figueroa PC is not responsible for any messaging fees.'
-                    : 'Pueden aplicarse tarifas est\u00e1ndar de mensajes y datos seg\u00fan lo determine su operador m\u00f3vil. Rafael Figueroa PC no es responsable de los cargos de mensajer\u00eda.'}
+                    ? 'Standard message and data rates may apply as determined by your mobile carrier. Figueroa Law Group is not responsible for any messaging fees.'
+                    : 'Pueden aplicarse tarifas est\u00e1ndar de mensajes y datos seg\u00fan lo determine su operador m\u00f3vil. Figueroa Law Group no es responsable de los cargos de mensajer\u00eda.'}
                 </p>
               </div>
 
@@ -82,8 +85,8 @@ export default function SMSTermsPage() {
                 <h3 className="font-serif text-xl font-semibold text-flg-dark mb-3">5. {language === 'en' ? 'Support & Help' : 'Soporte y Ayuda'}</h3>
                 <p className="text-flg-dark/70">
                   {language === 'en' ? 'Reply HELP or visit ' : 'Responda HELP o visite '}
-                  <a href="https://rafaelfigueroalaw.com" target="_blank" rel="noopener noreferrer" className="text-flg-accent hover:text-flg-blue underline">
-                    rafaelfigueroalaw.com
+                  <a href="https://flgus.com" target="_blank" rel="noopener noreferrer" className="text-flg-accent hover:text-flg-blue underline">
+                    flgus.com
                   </a>
                 </p>
               </div>
