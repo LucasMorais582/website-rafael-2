@@ -88,7 +88,7 @@ export default function HomePage() {
            <div className="mt-10 lg:mt-0 lg:pl-4 xl:pl-20 w-full xl:translate-x-8 2xl:translate-x-16">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full">
                 <Image
-                  src="/hero-image.jpg"
+                  src="/hero-image.webp"
                   alt="Person standing at a crossroads with arrows pointing in many directions, symbolizing clarity and guidance through legal uncertainty"
                   width={1400}
                   height={900}
@@ -146,7 +146,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/world-map.jpg"
+                  src="/world-map.webp"
                   alt="Vintage world map with people from diverse backgrounds, representing international immigration and global perspective"
                   width={800}
                   height={800}
