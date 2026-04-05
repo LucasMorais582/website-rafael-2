@@ -174,7 +174,7 @@ export async function POST(request) {
       }
 
       const { data, error } = await resend.emails.send({
-        from: 'Figueroa Law Group Website <onboarding@resend.dev>',
+        from: 'Figueroa Law Group Website <info@flgus.com>',
         to: ['info@flgus.com'],
         subject: `New Contact Form Submission - ${name}`,
         reply_to: email,
